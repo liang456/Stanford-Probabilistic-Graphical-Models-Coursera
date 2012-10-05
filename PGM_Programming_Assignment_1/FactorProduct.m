@@ -62,6 +62,11 @@ indxB = AssignmentToIndex(assignments(:, mapB), B.card);
 % Correctly populate the factor values of C
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Avals = A.val(indxA);
+Bvals = B.val(indxB);
+
+C.val = Avals.*Bvals;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end
