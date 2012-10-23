@@ -67,22 +67,14 @@ for k=1:length(phenotypeFactor.val)
 %         XY = X+Y;
 %         z = z + w*XY;
 %     end;
-    
+    X = zeros(length(geneCopyVarOneList), length(alleleWeights));
+    Y = zeros(length(geneCopyVarOneList), length(alleleWeights));
     
     for gene=1:length(geneCopyVarOneList)
-        X = zeros(length(geneCopyVarOneList), length(alleleWeights));
-    Y = zeros(length(geneCopyVarOneList), length(alleleWeights));
-       X((gene), assign(gene+1)) = 1;
-       Y((gene), assign(gene+1+length(geneCopyVarOneList))) = 1;
+       X(geneCopyVarOneList(gene), assign(gene+1)) = 1;
+       Y(geneCopyVarTwoList(gene), assign(gene+1+length(geneCopyVareOneList))) = 1;
        w = alleleWeights{gene};
-       for all = 1:length(w)
-           z = z+w(all)*(X(gene,all)+Y(gene,all));
-       end
     end;
-    if(assign(1) == 1)
     phenotypeFactor.val(k) = computeSigmoid(z);
-    else
-        phenotypeFactor.val(k) = 1-computeSigmoid(z);
-    end;
 end;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
