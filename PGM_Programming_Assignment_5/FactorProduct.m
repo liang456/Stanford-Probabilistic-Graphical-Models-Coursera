@@ -21,11 +21,7 @@ if (isempty(B.var)), C = A; return; end;
 [dummy iA iB] = intersect(A.var, B.var);
 if ~isempty(dummy)
 	% A and B have at least 1 variable in common
-    try
 	assert(all(A.card(iA) == B.card(iB)), 'Dimensionality mismatch in factors');
-    catch
-        iA;
-    end;
 end
 
 % Set the variables of C
